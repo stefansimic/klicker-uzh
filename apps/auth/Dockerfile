@@ -23,6 +23,8 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 
 RUN npm i -g --ignore-scripts pnpm@8.10.0 turbo@1.10.16
+run npm i -g install next react react-dom
+
 
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm* .
