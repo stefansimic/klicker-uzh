@@ -11,7 +11,7 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
-  const { locale } = useRouter()
+  const locale = useRouter()
 
   return (
     <div id="__app" className={`${sourceSansPro.variable} font-sans`}>
