@@ -46,34 +46,34 @@ http:
     api:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3000"
+          - url: "http://api.klicker.xeno-isenegger.ch:3000"
 
     pwa:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3001"
+          - url: "http://pwa.klicker.xeno-isenegger.ch:3001"
 
     manage:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3002"
+          - url: "http://manage.klicker.xeno-isenegger.ch:3002"
 
     control:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3003"
+          - url: "http://control.klicker.xeno-isenegger.ch:3003"
 
     auth:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3010"
+          - url: "http://auth.klicker.xeno-isenegger.ch:3010"
 
     func-responses:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:7072"
+          - url: "http://func-response.klicker.xeno-isenegger.ch:7072"
 
     func-response-processor:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:7073"
+          - url: "http://func-response-processor.klicker.xeno-isenegger.ch:7073"
