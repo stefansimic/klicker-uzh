@@ -30,6 +30,13 @@ services:
       - './util/traefik/rules_docker.yaml:/etc/traefik/rules.yaml'
     networks:
       - klicker
+    labels:
+        - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+        - "traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist=*"
+        - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
+        - "traefik.http.middlewares.cors.headers.addvaryheader=true"
+    expose:
+      - "80"
 
   auth:
     profiles:
@@ -140,7 +147,7 @@ services:
         NODE_ENV: 'development'
     environment:
       APP_SECRET: 'abcd'
-      COOKIE_DOMAIN: .klicker.com
+      COOKIE_DOMAIN: .klicker.xeno-isenegger.com
       CRON_TOKEN: 'abcd'
       DATABASE_URL: 'postgres://klicker:klicker@postgres:5432/klicker'
       NODE_ENV: development

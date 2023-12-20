@@ -46,12 +46,12 @@ http:
     api:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:3000"
+          - url: "http://api.klicker.xeno-isenegger.ch:3000"
 
     pwa:
       loadBalancer:
         servers:
-          - url: "http://host.docker.internal:3001"
+          - url: "http://pwa.klicker.xeno-isenegger.ch:3001"
 
     manage:
       loadBalancer:
