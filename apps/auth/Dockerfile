@@ -9,7 +9,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-RUN npm i -g --ignore-scripts pnpm@8.10.0 turbo@1.10.16
+RUN npm i -g --ignore-scripts pnpm@8.14.1 turbo@1.11.3
 
 COPY . .
 
@@ -22,9 +22,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-RUN npm i -g --ignore-scripts pnpm@8.10.0 turbo@1.10.16
-run npm i -g install next react react-dom
-
+RUN npm i -g --ignore-scripts pnpm@8.14.1 turbo@1.11.3
 
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm* .
