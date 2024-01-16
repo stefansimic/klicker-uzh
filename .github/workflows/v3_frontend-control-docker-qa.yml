@@ -6,7 +6,6 @@ on:
       - 'v3'
       - 'v3*'
       - 'CI'
-      - 'switch*'
     paths:
       - 'apps/frontend-control/**'
       - '.github/workflows/v3_frontend-control**'

@@ -6,7 +6,6 @@ on:
       - 'v3'
       - 'v3*'
       - 'CI'
-      - 'switch*'
     paths:
       - 'apps/auth/**'
       - '.github/workflows/v3_auth**'
