@@ -1,6 +1,12 @@
 http:
   routers:
     api:
+      rule: "Host(`backend-sls.klicker.xeno-isenegger.ch`)"
+      entrypoints:
+        - "web"
+      service: "api"
+
+    api2:
       rule: "Host(`api.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
