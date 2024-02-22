@@ -21,6 +21,7 @@ services:
         - "traefik.http.middlewares.cors.headers.addvaryheader=true"
     expose:
       - "80"
+      - "443"
     extra_hosts:
       - "host.containers.internal:host-gateway"
 

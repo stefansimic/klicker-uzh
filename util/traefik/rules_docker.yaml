@@ -1,16 +1,32 @@
 http:
+  middlewares:
+    cors:
+      headers:
+        accessControlAllowOriginList:
+          - "http://pwa.klicker.xeno-isenegger.ch"
+          - "http://api.klicker.xeno-isenegger.ch"
+          - "*"
+        accessControlAllowMethods:
+          - "GET"
+          - "POST"
+          - "PUT"
+          - "DELETE"
+        accessControlAllowHeaders:
+          - "Content-Type"
+          - "Authorization"
+      accessControlAllowCredentials: true
+      options:
+        customResponseHeaders:
+          - "Access-Control-Allow-Methods: GET, POST, PUT, DELETE"
+          - "Access-Control-Allow-Headers: Content-Type, Authorization"
   routers:
     api:
-      rule: "Host(`backend-sls.klicker.xeno-isenegger.ch`)"
-      entrypoints:
-        - "web"
-      service: "api"
-
-    api2:
       rule: "Host(`api.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "api"
+      middlewares:
+        - "cors"
 
     pwa:
       rule: "Host(`pwa.klicker.xeno-isenegger.ch`)"
