@@ -17,6 +17,7 @@ services:
     labels:
         - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
         - "traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist=*"
+        - "traefik.http.middlewares.custom-header-name-here.headers.accesscontrolallowheaders=*"
         - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
         - "traefik.http.middlewares.cors.headers.addvaryheader=true"
     expose:
@@ -31,7 +32,7 @@ services:
     image: ghcr.io/stefansimic/klicker-uzh/auth:v3.1-dev-merge
     environment:
       APP_SECRET: abcd
-      DATABASE_URL: 'postgres://klicker:klicker@postgres:5432/main'
+      DATABASE_URL: 'postgres://klicker:klicker@postgres:5432/klicker'
       # EDUID_CLIENT_SECRET: ''
       # TEAMS_WEBHOOK_URL: ''
     ports:
