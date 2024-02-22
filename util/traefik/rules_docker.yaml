@@ -11,16 +11,12 @@ http:
       entrypoints:
         - "web"
       service: "pwa"
-      middlewares:
-        - "cors"
 
     manage:
       rule: "Host(`manage.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "manage"
-      middlewares:
-        - "cors"
 
     control:
       rule: "Host(`control.klicker.xeno-isenegger.ch`)"
@@ -33,8 +29,6 @@ http:
       entrypoints:
         - "web"
       service: "auth"
-      middlewares:
-        - "cors"
 
     func-responses:
       rule: "Host(`func-responses.klicker.xeno-isenegger.ch`)"
