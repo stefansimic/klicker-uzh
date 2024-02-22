@@ -27,7 +27,7 @@ services:
   auth:
     profiles:
       - full
-    image: ghcr.io/stefansimic/klicker-uzh/auth:v3.1-dev
+    image: ghcr.io/stefansimic/klicker-uzh/auth:v3.1-dev-merge
     environment:
       APP_SECRET: abcd
       DATABASE_URL: 'postgres://klicker:klicker@postgres:5432/main'
@@ -43,7 +43,7 @@ services:
   frontend_pwa:
     profiles:
       - full
-    image: ghcr.io/stefansimic/klicker-uzh/frontend-pwa:v3.1-dev
+    image: ghcr.io/stefansimic/klicker-uzh/frontend-pwa:v3.1-dev-merge
     environment:
       APP_SECRET: abcd
     ports:
@@ -56,7 +56,7 @@ services:
   frontend_manage:
     profiles:
       - full
-    image: ghcr.io/stefansimic/klicker-uzh/frontend-manage:v3.1-dev
+    image: ghcr.io/stefansimic/klicker-uzh/frontend-manage:v3.1-dev-merge
     ports:
       - 3002:3000
     networks:
@@ -67,7 +67,7 @@ services:
   frontend_control:
     profiles:
       - full
-    image: ghcr.io/stefansimic/klicker-uzh/frontend-control:v3.1-dev
+    image: ghcr.io/stefansimic/klicker-uzh/frontend-control:v3.1-dev-merge
     ports:
       - 3003:3000
     networks:
@@ -78,7 +78,7 @@ services:
   backend:
     profiles:
       - full
-    image: ghcr.io/stefansimic/klicker-uzh/backend-docker:v3.1-dev
+    image: ghcr.io/stefansimic/klicker-uzh/backend-docker:v3.1-dev-merge
     environment:
       APP_SECRET: 'abcd'
       COOKIE_DOMAIN: .klicker.xeno-isenegger.ch
