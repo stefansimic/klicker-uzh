@@ -7,6 +7,7 @@ services:
       - --providers.file.filename=/etc/traefik/rules.yaml
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
+      - --entrypoints.web.address=:443
     ports:
       - 80:80
       - 443:443
@@ -83,7 +84,7 @@ services:
     image: ghcr.io/stefansimic/klicker-uzh/backend-docker:v3.1-dev-merge
     environment:
       APP_SECRET: 'abcd'
-      COOKIE_DOMAIN: auth.klicker.xeno-isenegger.ch
+      COOKIE_DOMAIN: .klicker.xeno-isenegger.ch
       CRON_TOKEN: 'abcd'
       DATABASE_URL: 'postgres://klicker:klicker@postgres:5432/klicker'
       NOTIFICATION_SUPPORT_MAIL: 'noone@klicker.com'

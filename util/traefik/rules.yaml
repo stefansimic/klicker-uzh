@@ -3,8 +3,8 @@ http:
     cors:
       headers:
         accessControlAllowOriginList:
-          - "http://pwa.klicker.xeno-isenegger.ch"
-          - "http://api.klicker.xeno-isenegger.ch"
+          - "https://pwa.klicker.xeno-isenegger.ch"
+          - "https://api.klicker.xeno-isenegger.ch"
           - "*"
         accessControlAllowMethods:
           - "GET"
