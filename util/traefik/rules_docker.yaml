@@ -1,14 +1,13 @@
-# traefik.yml
- 
 api:
   dashboard: true
+  insecure: true
  
 entryPoints:
   web:
     address: ":80"
   websecure:
     address: ":443"
- 
+
 http:
   routers:
     api:
@@ -17,6 +16,7 @@ http:
         - "web"
         - "websecure"
       service: "api"
+      tls: true
  
     pwa:
       rule: "Host(`pwa.klicker.xeno-isenegger.ch`)"
@@ -24,6 +24,7 @@ http:
         - "web"
         - "websecure"
       service: "pwa"
+      tls: true
  
     manage:
       rule: "Host(`manage.klicker.xeno-isenegger.ch`)"
@@ -31,6 +32,7 @@ http:
         - "web"
         - "websecure"
       service: "manage"
+      tls: true
  
     control:
       rule: "Host(`control.klicker.xeno-isenegger.ch`)"
@@ -38,6 +40,7 @@ http:
         - "web"
         - "websecure"
       service: "control"
+      tls: true
  
     auth:
       rule: "Host(`auth.klicker.xeno-isenegger.ch`)"
@@ -45,6 +48,7 @@ http:
         - "web"
         - "websecure"
       service: "auth"
+      tls: true
  
     func-responses:
       rule: "Host(`func-responses.klicker.xeno-isenegger.ch`)"
@@ -52,6 +56,7 @@ http:
         - "web"
         - "websecure"
       service: "func-responses"
+      tls: true
  
     func-response-processor:
       rule: "Host(`func-response-processor.klicker.xeno-isenegger.ch`)"
@@ -59,6 +64,7 @@ http:
         - "web"
         - "websecure"
       service: "func-response-processor"
+      tls: true
  
   services:
     api:
