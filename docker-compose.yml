@@ -63,6 +63,8 @@ services:
     labels:
       - "traefik.http.routers.frontend_pwa.entrypoints=websecure"
       - "traefik.http.routers.frontend_pwa.rule=Host(`pwa.klicker.xeno-isenegger.ch`)"
+      - "traefik.http.routers.frontend_pwa.tls=true"
+
 
   frontend_manage:
     profiles:
@@ -121,6 +123,11 @@ services:
       - klicker
     extra_hosts:
       - "host.containers.internal:host-gateway"
+    labels:
+      - "traefik.http.routers.frontend_pwa.entrypoints=websecure"
+      - "traefik.http.routers.frontend_pwa.rule=Host(`api.klicker.xeno-isenegger.ch`)"
+      - "traefik.http.routers.frontend_pwa.tls=true"
+
 
   # main database
   postgres:
