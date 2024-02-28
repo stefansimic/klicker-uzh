@@ -6,7 +6,7 @@ api:
 entryPoints:
   web:
     address: ":80"
-  web-secure:
+  websecure:
     address: ":443"
  
 http:
@@ -15,49 +15,49 @@ http:
       rule: "Host(`api.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "api"
  
     pwa:
       rule: "Host(`pwa.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "pwa"
  
     manage:
       rule: "Host(`manage.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "manage"
  
     control:
       rule: "Host(`control.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "control"
  
     auth:
       rule: "Host(`auth.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "auth"
  
     func-responses:
       rule: "Host(`func-responses.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "func-responses"
  
     func-response-processor:
       rule: "Host(`func-response-processor.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "web-secure"
+        - "websecure"
       service: "func-response-processor"
  
   services:
