@@ -60,6 +60,9 @@ services:
       - klicker
     extra_hosts:
       - "host.containers.internal:host-gateway"
+    labels:
+      - "traefik.http.routers.frontend_pwa.entrypoints=websecure"
+      - "traefik.http.routers.frontend_pwa.rule=Host(`pwa.klicker.xeno-isenegger.ch`)"
 
   frontend_manage:
     profiles:
