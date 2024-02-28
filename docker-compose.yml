@@ -8,19 +8,24 @@ services:
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.internal.acme.email=your-email@example.com
+      - --certificatesresolvers.internal.acme.storage=/etc/traefik/acme/acme.json
+      - --certificatesresolvers.internal.acme.tlschallenge=true
     ports:
       - 80:80
       - 443:443
     volumes:
       - './util/traefik/rules_docker.yaml:/etc/traefik/rules.yaml'
+      - './acme:/etc/traefik/acme'
     networks:
       - klicker
     labels:
-        - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
-        - "traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist=*"
-        - "traefik.http.middlewares.custom-header-name-here.headers.accesscontrolallowheaders=*"
-        - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
-        - "traefik.http.middlewares.cors.headers.addvaryheader=true"
+      - "traefik.http.middlewares.cors.headers.accesscontrolallowmethods=*"
+      - "traefik.http.middlewares.cors.headers.accesscontrolalloworiginlist=*"
+      - "traefik.http.middlewares.custom-header-name-here.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
+      - "traefik.http.middlewares.cors.headers.addvaryheader=true"
+      - "traefik.http.routers.blog.tls.certresolver=internal" 
     expose:
       - "80"
       - "443"

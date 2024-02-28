@@ -8,21 +8,6 @@ entryPoints:
     address: ":80"
   web-secure:
     address: ":443"
- 
-providers:
-  file:
-    filename: rules.toml
- 
-certificatesResolvers:
-  internal:
-    selfSigned:
-      privateKey: |
-        -----BEGIN RSA PRIVATE KEY-----
-<Hier den privaten Schlüssel einfügen>
-        -----END RSA PRIVATE KEY-----
-      certificate: |
-        -----BEGIN CERTIFICATE-----
-<Hier das Zertifikat einfügen>
         -----END CERTIFICATE-----
  
 http:
@@ -32,56 +17,42 @@ http:
       entrypoints:
         - "web"
       service: "api"
-      tls:
-        certResolver: "internal"
  
     pwa:
       rule: "Host(`pwa.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "pwa"
-      tls:
-        certResolver: "internal"
  
     manage:
       rule: "Host(`manage.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "manage"
-      tls:
-        certResolver: "internal"
  
     control:
       rule: "Host(`control.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "control"
-      tls:
-        certResolver: "internal"
  
     auth:
       rule: "Host(`auth.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "auth"
-      tls:
-        certResolver: "internal"
  
     func-responses:
       rule: "Host(`func-responses.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "func-responses"
-      tls:
-        certResolver: "internal"
  
     func-response-processor:
       rule: "Host(`func-response-processor.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
       service: "func-response-processor"
-      tls:
-        certResolver: "internal"
  
   services:
     api:
