@@ -8,15 +8,18 @@ services:
       - --providers.file.watch=true
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
-      - --certificatesresolvers.internal.acme.email=your-email@example.com
-      - --certificatesresolvers.internal.acme.storage=/etc/traefik/acme/acme.json
-      - --certificatesresolvers.internal.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.email=stefansim2000@gmail.com
+      - --certificatesresolvers.myresolver.acme.storage=acme.json
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
     ports:
       - 80:80
       - 443:443
     volumes:
       - './util/traefik/rules_docker.yaml:/etc/traefik/rules.yaml'
-      - './acme:/etc/traefik/acme'
+      - "./letsencrypt:/letsencrypt"
+      - "/home/debian/klicker-uzh/util/traefik/acme.json:/acme.json"
     networks:
       - klicker
     labels:
@@ -25,7 +28,10 @@ services:
       - "traefik.http.middlewares.custom-header-name-here.headers.accesscontrolallowheaders=*"
       - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
       - "traefik.http.middlewares.cors.headers.addvaryheader=true"
-      - "traefik.http.routers.blog.tls.certresolver=internal" 
+        # - "traefik.http.routers.blog.tls.certresolver=internal" 
+      - "traefik.http.routers.blog.rule=(Host(`auth.klicker.xeno-isenegger.ch`) && Path(`/*`)) || Host(`manage.klicker.xeno-isenegger.ch`) || Host(`api.klicker.xeno-isenegger.ch`)"
+      - "traefik.http.routers.blog.tls=true"
+      - "traefik.http.routers.blog.tls.certresolver=myresolver"
     expose:
       - "80"
       - "443"
@@ -76,6 +82,11 @@ services:
       - klicker
     extra_hosts:
       - "host.containers.internal:host-gateway"
+    labels:
+      - "traefik.enable=true"
+        # - "traefik.http.routers.frontend_manage.rule=Host(`manage.klicker.xeno-isenegger.ch`)"
+      - "traefik.http.routers.frontend_manage.entrypoints=websecure"
+      - "traefik.http.routers.frontend_manage.tls.certresolver=myresolver"
 
   frontend_control:
     profiles:
