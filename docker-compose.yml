@@ -10,8 +10,8 @@ services:
       - --entrypoints.websecure.address=:443
       - --certificatesresolvers.myresolver.acme.email=stefansim2000@gmail.com
       - --certificatesresolvers.myresolver.acme.storage=acme.json
-      - --entrypoints.web.http.redirections.entrypoint.to=websecure
-      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+        #   - --entrypoints.web.http.redirections.entrypoint.to=websecure
+        # - --entrypoints.web.http.redirections.entrypoint.scheme=https
       - --certificatesresolvers.myresolver.acme.tlschallenge=true
     ports:
       - 80:80
@@ -29,7 +29,7 @@ services:
       - "traefik.http.middlewares.cors.headers.accesscontrolmaxage=100"
       - "traefik.http.middlewares.cors.headers.addvaryheader=true"
         # - "traefik.http.routers.blog.tls.certresolver=internal" 
-      - "traefik.http.routers.blog.rule=(Host(`auth.klicker.xeno-isenegger.ch`) && Path(`/*`)) || Host(`manage.klicker.xeno-isenegger.ch`) || Host(`api.klicker.xeno-isenegger.ch`)"
+      - "traefik.http.routers.blog.rule=(Host(`auth.klicker.xeno-isenegger.ch`) && Path(`/*`)) || Host(`manage.klicker.xeno-isenegger.ch`) || Host(`api.klicker.xeno-isenegger.ch`) || Host(`pwa.klicker.xeno-isenegger.ch`) || Host(`middleware.klicker.xeno-isenegger.ch`)"
       - "traefik.http.routers.blog.tls=true"
       - "traefik.http.routers.blog.tls.certresolver=myresolver"
     expose:

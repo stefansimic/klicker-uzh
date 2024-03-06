@@ -1,7 +1,12 @@
 api:
   dashboard: true
   insecure: true
- 
+
+log:
+  level: "DEBUG"
+  filePath: "./log-file.log"
+  format: json 
+
 entryPoints:
   web:
     address: ":80"
@@ -23,8 +28,17 @@ http:
       entrypoints:
         - "web"
         - "websecure"
-      service: "api"
+      service: "middleware"
       tls: 
+        certResolver: "myresolver"
+
+    middleware:
+      rule: "Host(`middleware.klicker.xeno-isenegger.ch`)"
+      entrypoints:
+        - "web"
+        - "websecure"
+      service: "middleware"
+      tls:
         certResolver: "myresolver"
  
     pwa:
@@ -82,8 +96,13 @@ http:
     api:
       loadBalancer:
         servers:
-          - url: "http://host.containers.internal:3000"
+          - url: "http://localhost:3000"
  
+    middleware:
+      loadBalancer:
+        servers:
+          - url: "http://host.containers.internal:3333"
+
     pwa:
       loadBalancer:
         servers:
