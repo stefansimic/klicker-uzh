@@ -2,7 +2,7 @@ name: Build and deploy func-response-processor to Function App (Production)
 
 on:
   push:
-    tags: ['v*.*.*']
+    tags: ['v*.*.*','v*']
   workflow_dispatch:
 
 env:
