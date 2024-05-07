@@ -28,7 +28,7 @@ http:
       entrypoints:
         - "web"
         - "websecure"
-      service: "middleware"
+      service: "api"
       tls: 
         certResolver: "myresolver"
 
@@ -36,10 +36,10 @@ http:
       rule: "Host(`middleware.klicker.xeno-isenegger.ch`)"
       entrypoints:
         - "web"
-        - "websecure"
+          #  - "websecure"
       service: "middleware"
-      tls:
-        certResolver: "myresolver"
+        #  tls:
+        #   certResolver: "myresolver"
  
     pwa:
       rule: "Host(`pwa.klicker.xeno-isenegger.ch`)"
@@ -96,7 +96,7 @@ http:
     api:
       loadBalancer:
         servers:
-          - url: "http://localhost:3000"
+          - url: "http://host.containers.internal:3000"
  
     middleware:
       loadBalancer:
