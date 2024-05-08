@@ -99,6 +99,32 @@ services:
     extra_hosts:
       - "host.containers.internal:host-gateway"
 
+  func-response-processor:
+    build:
+      context: ./apps/func-response-processor/
+      dockerfile: Dockerfile
+    ports:
+      - '7073:80'
+    volumes:
+      - .apps/func-response-processor/local.settings.json:/home/site/wwwroot/local.settings.json
+    networks:
+      - klicker
+    extra_hosts:
+      - "host.containers.internal:host-gateway"
+
+  func-incoming-responses:
+    build:
+      context: ./apps/func-incoming-responses/
+      dockerfile: Dockerfile
+    ports:
+      - '7072:80'
+    volumes:
+      - .apps/func-incoming-responses/local.settings.json:/home/site/wwwroot/local.settings.json
+    networks:
+      - klicker
+    extra_hosts:
+      - "host.containers.internal:host-gateway"
+
   backend:
     profiles:
       - full

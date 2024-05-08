@@ -12,6 +12,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '7073:7073'
+      - '7073:80'
     volumes:
       - ./local.settings.json:/home/site/wwwroot/local.settings.json
