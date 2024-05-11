@@ -106,7 +106,7 @@ services:
     ports:
       - '7073:80'
     volumes:
-      - .apps/func-response-processor/local.settings.json:/home/site/wwwroot/local.settings.json
+      - ./apps/func-response-processor/local.settings.json:/home/site/wwwroot/local.settings.json
     networks:
       - klicker
     extra_hosts:
@@ -119,7 +119,7 @@ services:
     ports:
       - '7072:80'
     volumes:
-      - .apps/func-incoming-responses/local.settings.json:/home/site/wwwroot/local.settings.json
+      - ./apps/func-incoming-responses/local.settings.json:/home/site/wwwroot/local.settings.json
     networks:
       - klicker
     extra_hosts:
